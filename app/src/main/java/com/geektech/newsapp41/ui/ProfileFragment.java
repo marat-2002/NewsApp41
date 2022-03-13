@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.imageView.setOnClickListener(view1 -> mGetContent.launch("de"));
+        binding.imageView.setOnClickListener(view1 -> mGetContent.launch("image/*"));
     }
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
         @Override
