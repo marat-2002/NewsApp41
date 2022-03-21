@@ -22,11 +22,13 @@ import models.News;
 
 public class NewsFragment extends Fragment {
     private FragmentNewsBinding binding;
+    private News news;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
 
         binding = FragmentNewsBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -35,6 +37,8 @@ public class NewsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+      // news = (News) requireArguments().getSerializable("update");
+       // if (news != null)binding.editText.setText(news.getTitle());
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,8 +50,12 @@ public class NewsFragment extends Fragment {
 
     private void save() {
         String text = binding.editText.getText().toString();
-        News news = new News(text, System.currentTimeMillis());
         Bundle bundle = new Bundle();
+        if (news == null){
+             news = new News(text, System.currentTimeMillis());
+        }else {
+            news.setTitle(text);
+        }
         bundle.putSerializable  ("news", news);
         getParentFragmentManager().setFragmentResult("rk_news", bundle);
         close();
