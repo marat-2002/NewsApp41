@@ -88,6 +88,6 @@ public class HomeFragment extends Fragment {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
         Bundle bundle = new Bundle();
         bundle.putSerializable("update", news);
-        navController.navigate(R.id.newsFragment);
+        navController.navigate(R.id.newsFragment,bundle);
     }
 }

@@ -1,6 +1,9 @@
 package com.geektech.newsapp41;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,10 +19,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.geektech.newsapp41.databinding.ActivityMainBinding;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private boolean boardWasShown = false;
+    private Prefs prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-        if (true) {
+
+        prefs = new Prefs(this);
+        if (!prefs.isBoardShown()) {
             navController.navigate(R.id.boardFragment);
         }
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
@@ -50,6 +58,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.clear:prefs.clearPrefs(this);
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

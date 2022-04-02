@@ -9,8 +9,8 @@
         android:id="@+id/btnSkip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
         android:background="@color/white"
+        android:padding="16dp"
         android:text="Skip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,22 +21,20 @@
         android:layout_height="match_parent" />
 
 
-
     <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
         android:id="@+id/worm_dots_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         app:dotsColor="#319DF3"
-        app:dotsStrokeColor="#FFEB3B"
         app:dotsCornerRadius="8dp"
         app:dotsSize="16dp"
         app:dotsSpacing="4dp"
+        app:dotsStrokeColor="#FFEB3B"
         app:dotsStrokeWidth="2dp"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
